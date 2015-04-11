@@ -1,0 +1,39 @@
+#!/bin/bash
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+echo "Apply cloned indexes to a remote mongo databases collections"
+echo ""
+
+echo "Destination mongo db connection string:"
+echo ""
+echo "(In the format: mongodb://[username:password@]host[:port]/database)"
+echo "(Example: mongodb://localhost/soonerio_ins)"
+echo ""
+
+read mc_string
+
+if ! [[ "$mc_string" =~ ^mongodb://+ ]] ;
+then
+  echo "No input, aborting.";
+  exit 1;
+else
+
+  echo ""
+  echo "The program will write index information to all the collections of the database: $(echo $mc_string | grep / | cut -d/ -f4-)"
+  echo ""
+
+  read -p "Is this correct? (y/n) " -n 1 -r REPLY
+
+  if [[ "$REPLY" =~ ^[Yy]$ ]] ;
+  then
+    $DIR/../lib/writeIndex.js "$mc_string" "$DIR/../data/saved_indexes.js"
+    echo ""
+    echo "Complete"
+  else
+    echo ""
+    echo "Aborted!"
+  fi
+
+fi
+

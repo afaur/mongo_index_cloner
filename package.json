@@ -1,0 +1,28 @@
+{
+  "name": "mongo_index_cloner",
+  "version": "0.0.1",
+  "author": "afaur",
+  "description": "Have two databases with collections but one has indexes and the other does not.",
+  "scripts": {
+    "copy": "./bin/copy",
+    "apply": "./bin/apply"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afaur/mongo_index_cloner.git"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.6"
+  },
+  "dependencies": {
+    "mongodb": "*",
+    "mongoindex": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/afaur/mongo_index_cloner/issues"
+  },
+  "homepage": "https://github.com/afaur/mongo_index_cloner",
+  "main": "index.js",
+  "devDependencies": {}
+}
