@@ -30,6 +30,7 @@ else
     $DIR/../node_modules/mongoindex/index.js "$mc_string" "$DIR/../data/saved_indexes.js"
     echo ""
     echo "Complete"
+    rm "$DIR/../data/saved_indexes.js"
   else
     echo ""
     echo "Aborted!"
